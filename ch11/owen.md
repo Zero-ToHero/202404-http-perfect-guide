@@ -22,7 +22,7 @@
 
 쿠키가 탈취될 경우 해당 쿠키를 달취한 사람은 쿠키의 값을 임의로 바꿀 수 있다. 또한 해당 쿠키를 통해 만료되지 않은 유효한 쿠키라면 로그인 시도까지 가능하며, 이러한 쿠키에 중요한 정보를 보관한다면 큰 문제가 발생할 수 있다. 이를 `Cookie Hijacking` 이라고 한다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c77a2c20-9831-4c8a-9134-2d59b9750ec2/817bf879-2ece-4b55-85a8-de071080056b/Untitled.png)
+![image](https://github.com/Zero-ToHero/202404-http-perfect-guide/assets/71249347/6318f6c7-6fb3-4c13-8333-f83c463665f8)
 
 # 세션
 
@@ -50,13 +50,13 @@
 
 이러한 Load Balancing이 세션에 미치는 영향이 무엇일지 고민해볼 필요가 있다. 아래와 같은 상황이라면 어떨까
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c77a2c20-9831-4c8a-9134-2d59b9750ec2/89cec982-45df-46e9-8cbf-2882b58ae3a5/Untitled.png)
+![image](https://github.com/Zero-ToHero/202404-http-perfect-guide/assets/71249347/7c0013e1-f338-46d7-83ea-a077428a1561)
 
 위의 요청 사항에 이어 사용자는 다음 회원정보 조회 요청을 보내게 된다. 이때 발생할 수 있는 부분이 바로 해당 요청이 정확하게 세션정보가 기록된 Server1로 갈지에 대한 의문이다.
 
 다만 Load Balancer는 매 요청마다 자신의 알고리즘을 통해 요청을 분배하기 때문에 Server1로 간다는 확신은 할 수 없다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c77a2c20-9831-4c8a-9134-2d59b9750ec2/425bb509-1e57-4a4d-8312-9c5d298830f4/Untitled.png)
+![image](https://github.com/Zero-ToHero/202404-http-perfect-guide/assets/71249347/1ddce308-40be-4ffc-b770-2dc871407f09)
 
 위와 같은 상황이 발생하게 된다면, 사용자는 로그인을 처음부터 다시 해야 하는 상황이 발생하며, 로그인을 다시 하더라도 다음 요청이 2번 서버로 전달 된다면 다시 반복해야 하는 상황이 발생한다.
 
@@ -68,9 +68,9 @@
 
 이는 첫 request에 대한 응답을 준 서버에 대해서 해당 서버로만 요청을 보내는 방법으로, 즉 세션의 요청을 처음 처리한 서버로만 보내는 것을 말한다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c77a2c20-9831-4c8a-9134-2d59b9750ec2/fc72bb37-204a-4a3e-b858-fb2e14fc8dbb/Untitled.png)
+![image](https://github.com/Zero-ToHero/202404-http-perfect-guide/assets/71249347/58ccfe92-3b80-4f35-bba6-06980340a3fa)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c77a2c20-9831-4c8a-9134-2d59b9750ec2/bb281bb7-a8f8-4cb4-89e3-5b495d3625d2/Untitled.png)
+![image](https://github.com/Zero-ToHero/202404-http-perfect-guide/assets/71249347/9fe63694-8188-435c-8510-53bec3e6b8b9)
 
 일반 적으로 위와 같은 `Sticky Session` 의 경우 Cookie를 사용하거나 클라이언트의 IP를 활용한다.
 
@@ -82,7 +82,7 @@
 
 이번엔 세션을 공유하는 방식으로 `Session Clustering` 이라고 한다. 이는 하나의 서버가 장애로 인해 역할을 수행하지 못하는 상황이 생기더라도 동일한 세션으로 관리하기 때문에 세션에 대한 정보를 유실없이 유지할 수 있다는 특징이 있다.(모든 서버에 세션 저장)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c77a2c20-9831-4c8a-9134-2d59b9750ec2/2a2d57c7-9e89-40d9-9448-a9288952d157/Untitled.png)
+![image](https://github.com/Zero-ToHero/202404-http-perfect-guide/assets/71249347/243d2b69-2468-41f9-ac63-1c5e30305895)
 
 - 단점
   모든 서버에 세션정보를 다 저장해야 하기 때문에 서버 메모리의 비효율이 생긴다.
@@ -93,7 +93,7 @@
 
 마지막으로 별도의 세션을 두어 관리하는 방식이다. 보통 간단하게 Redis를 통해 Session Storage로 사용할 수 있으며, 이는 각 서버 혹은 단일 서버에 세션을 저장하는 것이 아니라 외부 서버를 통해(캐시 서버) 세션정보를 관리하는 것을 말한다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c77a2c20-9831-4c8a-9134-2d59b9750ec2/bdd77245-0fb3-497b-86e6-05930919d7d9/Untitled.png)
+![image](https://github.com/Zero-ToHero/202404-http-perfect-guide/assets/71249347/69390270-b58d-47d5-abe0-91f2b0dfc218)
 
 즉 모든 WAS들이 요청이 들어올 경우 Redis 혹은 별도의 Session Server를 통해 세션정보를 읽어오는 방식이다.
 
