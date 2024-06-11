@@ -19,3 +19,5 @@
 
 ![image](https://github.com/heeom/202404-http-perfect-guide/assets/64389364/f0c8b107-df67-4a7a-970a-7af4ede359e8)
 - HTTP/2에선 Header에 중복값이 존재하는 경우 Static/Dynamic Header Table 개념을 사용하여 중복 Header를 검출하고 중복된 Header는 index값만 전송하고 중복되지 않은 Header정보의 값은  Huffman Encoding 기법으로 압축해서 전송한다.
+
+https://http2.tistory.com/1
