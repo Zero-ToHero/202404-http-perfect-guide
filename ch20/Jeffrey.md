@@ -74,10 +74,13 @@
 
 ### **inter-AS / intra-AS**
 
-- **intra-AS :** 경우 하나의 AS 내의 라우터 끼리 관계를 의미한다.
-    - 종류: RIP, IGRP, EIGRP, OSPF
-- **inter-AS :** AS와 AS간의 관계를 의미하며, IGP(Interior Gateway Protocol)라고 불리기도 한다.
-    - 종류: EGP, BGP
+ - **intra-AS :** 경우 하나의 AS 내의 라우터 끼리 관계를 의미한다.
+    - IGP / IRP 프로토콜이 사용된다.
+        - IGP종류 : RIP, IGRP, EIGRP, OSPF
+- **inter-AS :** AS와 AS간의 관계를 의미한다.
+    - EGP / ERP 프로토콜이 사용된다.
+        - EGP 종류: BGP
+
 
 <br>
 
